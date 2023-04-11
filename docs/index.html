@@ -9,6 +9,7 @@
 <link rel="icon" href="asset/image/avator.png">
 <link rel="stylesheet" href="css/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="js/String.HalfWidthLength.js"></script>
 <script src="js/main.js"></script>
 </head>
 <body>
@@ -521,7 +522,215 @@ A┤ 　　　└F
 ♳♴♵♶♷♸♹♺
 </code></pre>
 
-<ol style="padding:0;list-style-type:none;">
+<style>
+:is(ol,ul).table0 {
+    width: 100px;
+    /*table-layout:fixed;*/
+    padding:0;
+    list-style-type:none;
+    display:table;
+    border-collapse:collapse;
+}
+:is(ol,ul).table0 li {
+    display:table-cell;
+    border:#333333 1px solid;
+    padding: 0.25em;
+    word-break: keep-all;
+}
+</style>
+<ol class="table0">
+<li>表セルA
+<li>表セルB
+<li>表セルC
+<li>DDDDDDDDDDDDDDDDDDDDDDD
+<li>EEE
+<li>FFFFFFFF
+<li>GGGG
+<li>HHHHHHHHHHHH
+<li>I
+<li>表セルJ
+<li>表セルK
+<li>表セルL
+<li>表セルM
+<li>表セルN
+<li>表セルO
+<li>表セルP
+<li>表セルQ
+<li>表セルR
+<li>表セルS
+<li>表セルT
+<li>表セルU
+<li>表セルV
+<li>表セルW
+<li>表セルX
+<li>表セルY
+<li>表セルZ
+<li>表セルN
+<li>表セルN
+<li>表セルN
+</ol>
+
+<style>
+:is(ol,ul).table1 {
+    width: 100%;
+    table-layout:fixed;
+    padding:0; margin:0;
+    list-style-type:none;
+    /*display:table;*/
+    border-collapse:collapse;
+}
+:is(ol,ul).table1 li {
+    display:inline;
+    word-break: keep-all;
+    line-height: 1.80em;
+    padding: 0.25em;
+    border:#333333 1px solid;
+    /*
+    float:left;
+    padding: 0.25em;
+    */
+    /*
+    display:inline;
+    border:#333333 1px solid;
+    padding: 0.25em;
+    margin: 0.25em;
+    word-break: keep-all;
+    */
+    /*
+    display:table-cell;
+    border:#333333 1px solid;
+    padding: 0.25em;
+    word-break: keep-all;
+    */
+}
+</style>
+<ol class="table1">
+<li>表セルA
+<li>表セルB
+<li>表セルC
+<li>DDDDDDDDDDDDDDDDDDDDDDD
+<li>EEE
+<li>FFFFFFFF
+<li>GGGG
+<li>HHHHHHHHHHHH
+<li>I
+<li>表セルJ
+<li>表セルK
+<li>表セルL
+<li>表セルM
+<li>表セルN
+<li>表セルO
+<li>表セルP
+<li>表セルQ
+<li>表セルR
+<li>表セルS
+<li>表セルT
+<li>表セルU
+<li>表セルV
+<li>表セルW
+<li>表セルX
+<li>表セルY
+<li>表セルZ
+<li>表セルN
+<li>表セルN
+<li>表セルN
+</ol>
+
+
+<style>
+:is(ol,ul).table2 {
+    list-style-type:none;
+    padding:0; margin:0;
+    /*
+    width: 100%;
+    table-layout:fixed;
+    padding:0; margin:0;
+    list-style-type:none;
+    border-collapse:collapse;
+    font-size:16px;
+    */
+}
+:is(ol,ul).table2 li {
+    background: #FFFF00;
+    display:inline-block;
+    width:100px;
+    /*
+    display:inline-block;
+    word-break: keep-all;
+    line-height: 1.80em;
+    padding: 0.25em;
+    border:#333333 1px solid;
+    */
+    /*
+    float:left;
+    padding: 0.25em;
+    */
+    /*
+    display:inline;
+    border:#333333 1px solid;
+    padding: 0.25em;
+    margin: 0.25em;
+    word-break: keep-all;
+    */
+    /*
+    display:table-cell;
+    border:#333333 1px solid;
+    padding: 0.25em;
+    word-break: keep-all;
+    */
+}
+:is(ol,ul).table2 li:hover {
+    background:#00FF00;
+}
+</style>
+<ol id="list-table-2" class="table2">
+<li>表セルA
+<li>表セルB
+<li>表セルC
+<li>DDDDDDDDDDDDDDDDDDDDDDD
+<li>EEE
+<li>FFFFFFFF
+<li>GGGG
+<li>HHHHHHHHHHHH
+<li>I
+<li>表セルJ
+<li>表セルK
+<li>表セルL
+<li>表セルM
+<li>表セルN
+<li>表セルO
+<li>表セルP
+<li>表セルQ
+<li>表セルR
+<li>表セルS
+<li>表セルT
+<li>表セルU
+<li>表セルV
+<li>表セルW
+<li>表セルX
+<li>表セルY
+<li>表セルZ
+<li>表セルN
+<li>表セルN
+<li>表セルN
+</ol>
+<script>
+window.addEventListener('DOMContentLoaded', async(event) => {
+    const maxHalfWidthLen = Math.max(...[...document.querySelectorAll(`#list-table-2 li`)].map(e=>e.textContent.HalfWidthLength()))
+    console.log('maxHalfWidthLen: ', maxHalfWidthLen )
+    const width = (16 * (maxHalfWidthLen + (0.25*2)))
+    console.log('width: ', width)
+    //document.getElementById('list-table-2').style.setProperty('width', width)
+    for (let el of document.querySelectorAll(`#list-table-2 li`)) {
+        el.style.setProperty('width', `${width}px`)
+        el.style.setProperty('color', '#FF0000')
+    }
+    console.log(width)
+})
+</script>
+
+
+<ol style="padding:0;list-style-type:none;display:table;border-collapse:collapse;">
 <li><span></span><span> </span>aaaaaaaa
 <li><span></span><span> </span>bbbbbbbbbb
 <li><span></span><span> </span>cccc
