@@ -651,9 +651,13 @@ A┤ 　　　└F
     */
 }
 :is(ol,ul).table2 li {
-    background: #FFFF00;
     display:inline-block;
-    width:100px;
+    word-break: keep-all;
+    /*width:100px;*/
+    padding: 0.25em;
+    letter-spacing:0.05em;
+    background: #FFFF00;
+    border:#888888 1px solid;
     /*
     display:inline-block;
     word-break: keep-all;
@@ -716,18 +720,180 @@ A┤ 　　　└F
 </ol>
 <script>
 window.addEventListener('DOMContentLoaded', async(event) => {
-    const maxHalfWidthLen = Math.max(...[...document.querySelectorAll(`#list-table-2 li`)].map(e=>e.textContent.HalfWidthLength()))
-    console.log('maxHalfWidthLen: ', maxHalfWidthLen )
-    const width = (16 * (maxHalfWidthLen + (0.25*2)))
-    console.log('width: ', width)
+    function getCss(attr, el) { return getComputedStyle((el) ? el : document.querySelector(':root')).getPropertyValue(attr) }
+    
+    const LISTS = [...document.querySelectorAll(`#list-table-2 li`)]
+    const LIST_SIZES = LISTS.map(el=>el.clientWidth)
+    const MAX_WIDTH = Math.max(...LISTS.map(el=>el.clientWidth))
+    console.log('LIST_SIZES:', LIST_SIZES)
+    console.log('MaxWidth:', MAX_WIDTH)
+    console.log('list sizes:', LISTS.map(el=>getCss('width', el)))
+//    const maxHalfWidthLen = Math.max(...LISTS.map(e=>e.textContent.HalfWidthLength()))
+//    console.log('maxHalfWidthLen: ', maxHalfWidthLen )
+//    const width = (16 * (maxHalfWidthLen + (0.25*2))) + (16 * maxHalfWidthLen  * 0.05)
+//    console.log('width: ', width)
     //document.getElementById('list-table-2').style.setProperty('width', width)
-    for (let el of document.querySelectorAll(`#list-table-2 li`)) {
-        el.style.setProperty('width', `${width}px`)
+    for (let el of LISTS) {
+        el.style.setProperty('width', `${MAX_WIDTH}px`)
+        //el.style.setProperty('width', `${width}px`)
         el.style.setProperty('color', '#FF0000')
+        console.log('', el.clientWidth)
     }
     console.log(width)
 })
 </script>
+
+
+<style>
+:is(ol,ul).table3 {
+    list-style-type:none;
+    padding:0; margin:0;
+}
+:is(ol,ul).table3 li {
+    display:inline-block;
+    word-break: keep-all;
+    padding: 0.25em;
+    letter-spacing:0.05em;
+    background: #FFFF00;
+    border:#888888 1px solid;
+}
+:is(ol,ul).table3 li:hover {
+    background:#FFFFFF;
+}
+</style>
+<ol id="list-table-3" class="table3">
+<li>表セルA
+<li>表セルB
+<li>表セルC
+<li>DDDDDDDDDDDDDDDDDDDDDDD
+<li>EEE
+<li>FFFFFFFF
+<li>GGGG
+<li>HHHHHHHHHHHH
+<li>I
+<li>表セルJ
+<li>表セルK
+<li>表セルL
+<li>表セルM
+<li>表セルN
+<li>表セルO
+<li>表セルP
+<li>表セルQ
+<li>表セルR
+<li>表セルS
+<li>表セルT
+<li>表セルU
+<li>表セルV
+<li>表セルW
+<li>表セルX
+<li>表セルY
+<li>表セルZ
+<li>表セルN
+<li>表セルN
+<li>表セルN
+</ol>
+<script>
+window.addEventListener('DOMContentLoaded', async(event) => {
+    /*
+    function getCss(attr, el) { return getComputedStyle((el) ? el : document.querySelector(':root')).getPropertyValue(attr) }
+    
+    const LISTS = [...document.querySelectorAll(`#list-table-3 li`)]
+    const LIST_SIZES = LISTS.map(el=>el.clientWidth)
+    const MAX_WIDTH = Math.max(...LISTS.map(el=>el.clientWidth))
+    console.log('LIST_SIZES:', LIST_SIZES)
+    console.log('MaxWidth:', MAX_WIDTH)
+    console.log('list sizes:', LISTS.map(el=>getCss('width', el)))
+//    const maxHalfWidthLen = Math.max(...LISTS.map(e=>e.textContent.HalfWidthLength()))
+//    console.log('maxHalfWidthLen: ', maxHalfWidthLen )
+//    const width = (16 * (maxHalfWidthLen + (0.25*2))) + (16 * maxHalfWidthLen  * 0.05)
+//    console.log('width: ', width)
+    //document.getElementById('list-table-2').style.setProperty('width', width)
+    for (let el of LISTS) {
+        el.style.setProperty('width', `${MAX_WIDTH}px`)
+        //el.style.setProperty('width', `${width}px`)
+        el.style.setProperty('color', '#FF0000')
+        console.log('', el.clientWidth)
+    }
+    console.log(width)
+    */
+})
+</script>
+
+<style>
+:is(ol,ul).table4 {
+    list-style-type:none;
+    padding:0; margin:0;
+}
+:is(ol,ul).table4 li {
+    display:inline-block;
+    word-break: keep-all;
+    padding: 0.25em;
+    letter-spacing:0.05em;
+    background: #44FF44;
+    border:#888888 1px solid;
+}
+:is(ol,ul).table4 li:hover {
+    background:#FFFFFF;
+}
+</style>
+<ol id="list-table-4" class="table4">
+<li>C
+<li>make
+<li>C++
+<li>Java
+<li>C#
+<li>Rust
+<li>Bash
+<li>Python
+<li>Ruby
+<li>Go
+<li>HTML
+<li>CSS
+<li>JavaScript
+<li>TypeScript
+<li>SQL
+<li>Markdown
+<li>AsciiDoc
+<li>XML
+<li>JSON
+<li>YAML
+<li>TOML
+<li>CSV
+<li>TSV
+</ol>
+<script>
+window.addEventListener('DOMContentLoaded', async(event) => {
+    /*
+    function getCss(attr, el) { return getComputedStyle((el) ? el : document.querySelector(':root')).getPropertyValue(attr) }
+    
+    const LISTS = [...document.querySelectorAll(`#list-table-3 li`)]
+    const LIST_SIZES = LISTS.map(el=>el.clientWidth)
+    const MAX_WIDTH = Math.max(...LISTS.map(el=>el.clientWidth))
+    console.log('LIST_SIZES:', LIST_SIZES)
+    console.log('MaxWidth:', MAX_WIDTH)
+    console.log('list sizes:', LISTS.map(el=>getCss('width', el)))
+//    const maxHalfWidthLen = Math.max(...LISTS.map(e=>e.textContent.HalfWidthLength()))
+//    console.log('maxHalfWidthLen: ', maxHalfWidthLen )
+//    const width = (16 * (maxHalfWidthLen + (0.25*2))) + (16 * maxHalfWidthLen  * 0.05)
+//    console.log('width: ', width)
+    //document.getElementById('list-table-2').style.setProperty('width', width)
+    for (let el of LISTS) {
+        el.style.setProperty('width', `${MAX_WIDTH}px`)
+        //el.style.setProperty('width', `${width}px`)
+        el.style.setProperty('color', '#FF0000')
+        console.log('', el.clientWidth)
+    }
+    console.log(width)
+    */
+})
+</script>
+
+
+<ol id="list-table-5" class="table5">
+<li><ruby><img src="/tmp/work/Html.Ul.Ol.li.20230410143123/docs/asset/image/icon/rust.svg" style="width:4em;"><rt>Rust</rt></ruby>
+</ol>
+
+
 
 
 <ol style="padding:0;list-style-type:none;display:table;border-collapse:collapse;">
